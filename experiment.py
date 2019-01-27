@@ -8,7 +8,7 @@ from klibs.KLGraphics import fill, blit, flip
 from klibs.KLTime import CountDown
 from klibs.KLCommunication import message
 from klibs.KLResponseCollectors import KeyPressResponse
-from klibs.KLUserInterface import ui_request
+from klibs.KLUserInterface import ui_request, any_key
 
 import random
 
@@ -16,6 +16,9 @@ import random
 class PVT(klibs.Experiment):
 
     def setup(self):
+
+        # Add large font size style for PVT counter
+        self.txtm.add_style('PVT', '1.0deg')
         
         # Set up and configure ResponseCollector for detection responses
         self.rc.uses(KeyPressResponse)
@@ -25,7 +28,14 @@ class PVT(klibs.Experiment):
 
 
     def block(self):
-        pass
+        
+        # Show block start message and wait for input before starting block
+        start_msg = message("Press any key to start.", blit_txt=False)
+        fill()
+        blit(start_msg, 5, P.screen_c)
+        flip()
+
+        any_key() # wait for keypress before continuing
 
 
     def setup_response_collector(self):
@@ -52,7 +62,7 @@ class PVT(klibs.Experiment):
         response = self.rc.keypress_listener.response()
         
         # Stop timer and show for 1sec after response is made
-        elapsed_msg = message(str(int(response.rt)).zfill(4), blit_txt=False)
+        elapsed_msg = message(str(int(response.rt)).zfill(4), style='PVT', blit_txt=False)
         feedback_timer = CountDown(1)
         while feedback_timer.counting():
             fill()
@@ -82,7 +92,7 @@ class PVT(klibs.Experiment):
             elapsed = 0
         
         # Pad time elapsed with zeroes and render to text
-        elapsed_msg = message(str(elapsed).zfill(4), blit_txt=False)
+        elapsed_msg = message(str(elapsed).zfill(4), style='PVT', blit_txt=False)
         
         # Draw time elapsed to screen
         fill()

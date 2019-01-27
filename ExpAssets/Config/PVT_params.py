@@ -3,10 +3,10 @@
 #########################################
 # Runtime Settings
 #########################################
-collect_demographics = False
+collect_demographics = True
 manual_demographics_collection = False
 manual_trial_generation = False
-run_practice_blocks = True
+run_practice_blocks = False
 multi_user = False
 view_distance = 57 # in centimeters, 57cm = 1 deg of visual angle per cm of screen
 
@@ -23,7 +23,7 @@ labjacking = False
 #########################################
 default_fill_color = (128, 128, 128, 255)
 default_color = (255, 255, 255, 255)
-default_font_size = 1.0
+default_font_size = 0.5
 default_font_unit = 'deg'
 default_font_name = 'Roboto-Medium'
 
@@ -58,8 +58,8 @@ dm_show_gaze_dot = True
 #########################################
 primary_table = "trials"
 unique_identifier = "userhash"
-default_participant_fields = [[unique_identifier, "participant"], "gender", "age", "handedness"]
-default_participant_fields_sf = [[unique_identifier, "participant"], "random_seed", "gender", "age", "handedness"]
+exclude_data_cols = ["created"]
+append_info_cols = ["random_seed"]
 
 #########################################
 # PROJECT-SPECIFIC VARS
