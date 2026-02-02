@@ -9,14 +9,13 @@ manual_trial_generation = False
 run_practice_blocks = False
 multi_user = False
 view_distance = 57 # in centimeters, 57cm = 1 deg of visual angle per cm of screen
+allow_hidpi = True
 
 #########################################
 # Available Hardware
 #########################################
 eye_tracker_available = False
 eye_tracking = False
-labjack_available = False
-labjacking = False
 
 #########################################
 # Environment Aesthetic Defaults
@@ -43,7 +42,6 @@ saccadic_motion_threshold = 0.15
 multi_session_project = False
 trials_per_block = 100
 blocks_per_experiment = 1
-table_defaults = {} 
 
 #########################################
 # Development Mode Settings
